@@ -5,7 +5,7 @@
 ![Markdownlint Action](https://github.com/DK-Hostmaster/DKHM-RFC-Waiting_list/workflows/Markdownlint%20Action/badge.svg)
 ![Spellcheck Action](https://github.com/DK-Hostmaster/DKHM-RFC-Waiting_list/workflows/Spellcheck%20Action/badge.svg)
 
-2020-09-17
+2020-09-18
 Revision: 1.0
 
 ## Table of Contents
@@ -18,7 +18,6 @@ Revision: 1.0
   - [Document History](#document-history)
   - [XML and XSD Examples](#xml-and-xsd-examples)
 - [Description](#description)
-- [XSD Definition](#xsd-definition)
 - [References](#references)
 
 <!-- /MarkdownTOC -->
@@ -26,9 +25,22 @@ Revision: 1.0
 <a id="introduction"></a>
 ## Introduction
 
-This is a draft and proposal for changes to the process for domain name deletion via the DK Hostmaster EPP portal/service. The specification briefly touches on the registrar portal service, which mimicks the EPP service for consistency.
+This is a draft and proposal for changes to the process for domain name creation via the DK Hostmaster EPP portal/service. The specification briefly touches on the registrar portal service, which mimicks the EPP service for consistency.
 
-The overall [description of the concept][CONCEPT] of the registrar model offered by DK Hostmaster A/S provided as a general overview, where this RFC digs into the details of the cancellation/deletion of domain names in the context of an implementation proposal.
+The concept is to get the registration and application proces to be uniform. DK Hostmaster offers a waiting list product to end-users today. When waiting list offers require registration this is completed via DK Hostmaster.
+
+The raises some issues in regard to:
+
+- nameservers associated with the domainname
+- possible billing contact
+- possible administrative contact
+- and in the end, the registrar contact, based on the end-users choice of administrative model
+
+This RFC proposes to let domain names offered from the waiting list to be registered via the normal channels and procedures to address the above short comings to the current process.
+
+The procedure can be contained in the current registration process and within the EPP standard described in [RFC:5731][RFC5371].
+
+The only addition is that the offering communicates a AuthInfo token to the registrant, which has to be communicated as part of the registration request.
 
 <a id="about-this-document"></a>
 ### About this Document
@@ -43,7 +55,7 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 <a id="document-history"></a>
 ### Document History
 
-- 1.0 2020-08-25
+- 1.0 2020-09-18
   - Initial revision
 
 <a id="xml-and-xsd-examples"></a>
@@ -56,8 +68,49 @@ The proposed extensions and XSD definitions are available in the  [3.2 candidate
 <a id="description"></a>
 ## Description
 
-<a id="xsd-definition"></a>
-## XSD Definition
+### Registration of a Domain Name Offered from a Waiting list
+
+The registration, as described in the introduction is uniform to the process used today and described in the [DK Hostmaster EPP Service Specification][DKHMEPPSPEC].
+
+The only addition is the use of the standard AuthInfo section.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
+    <command>
+        <create>
+            <domain:create xmlns:domain="urn:ietf:params:xml:ns:domain-1.0" xsi:schemaLocation="urn:ietf:params:xml:ns:domain-1.0 domain-1.0.xsd">
+                <domain:name>dk-hostmaster-test-906.dk</domain:name>
+                <domain:period unit="y">1</domain:period>
+                <domain:ns>
+                    <domain:hostObj>ns1.dk-hostmaster.dk</domain:hostObj>
+                    <domain:hostObj>ns2.dk-hostmaster.dk</domain:hostObj>
+                </domain:ns>
+                <domain:registrant>DKHM1-DK</domain:registrant>
+                <domain:contact type="admin">DKHM2-DK</domain:contact>
+                <domain:contact type="billing">DKHM3-DK</domain:contact>
+                <domain:authInfo>
+                    <domain:pw>9c1735ba5966ccd615c8208b07404602e21de605ea3853b4702d1b6e9f504044</domain:pw>
+                </domain:authInfo>
+            </domain:create>
+        </create>
+        <extension>
+            <dkhm:orderconfirmationToken xmlns:dkhm="urn:dkhm:params:xml:ns:dkhm-3.0">testtoken</dkhm:orderconfirmationToken>
+        </extension>
+        <clTRID>92724843f12a3e958588679551aa988d</clTRID>
+    </command>
+</epp>
+```
+
+Example lifted from the [DK Hostmaster EPP Service Specification][DKHMEPPSPEC] and modified.
+
+As can be read from the example:
+
+- nameservers are now assigned as part of the registration and possible DNS issues addressed from registration time
+- Administrative contact is associated
+- Billing contact is associated
+
+The details on associating the registrar account is described in the ["DKHM RFC for Client ID support for EPP"][DKHMRFCCLID].
 
 <a id="references"></a>
 ## References
@@ -69,6 +122,5 @@ The proposed extensions and XSD definitions are available in the  [3.2 candidate
 [RFC5730]: https://www.rfc-editor.org/rfc/rfc5730.html
 [DKHMEPPSPEC]: https://github.com/DK-Hostmaster/epp-service-specification
 [DKHMXSDSPEC]: https://github.com/DK-Hostmaster/epp-xsd-files
-[CONCEPT]: https://www.dk-hostmaster.dk/en/new-basis-collaboration-between-registrars-and-dk-hostmaster
 [DKHMXSD3.2]: https://github.com/DK-Hostmaster/epp-xsd-files/blob/master/dkhm-3.2.xsd
-
+[DKHMRFCCLID]: https://github.com/DK-Hostmaster/DKHM-RFC-CLID
