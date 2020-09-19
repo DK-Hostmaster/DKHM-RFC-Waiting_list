@@ -6,7 +6,7 @@
 ![Spellcheck Action](https://github.com/DK-Hostmaster/DKHM-RFC-Waiting_list/workflows/Spellcheck%20Action/badge.svg)
 
 2020-09-19
-Revision: 1.0
+Revision: 1.1
 
 ## Table of Contents
 
@@ -52,6 +52,8 @@ The only addition is that the offering communicates a AuthInfo token to the regi
 
 We have adopted the term RFC (_Request For Comments_), due to the recognition in the term and concept, so this document is a process supporting document, aiming to serve the purpose of obtaining a common understanding of the proposed implementation and to foster discussion on the details of the implementation. The final specification will be lifted into the [DK Hostmaster EPP Service Specification][DKHMEPPSPEC] implementation and this document will be closed for comments and the document no longer be updated.
 
+This document is not the authoritative source for business and policy rules and possible discrepancies between this an any authoritative sources are regarded as errors in this document. This document is aimed at the technical specification and possible implementation and is an interpretation of authoritative sources and can therefor be erroneous.
+
 <a id="license"></a>
 ### License
 
@@ -59,6 +61,9 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 
 <a id="document-history"></a>
 ### Document History
+
+- 1.1 2020-09-19
+  - Addition of disclaimer
 
 - 1.0 2020-09-19
   - Initial revision
