@@ -28,3 +28,5 @@ xmlns
 XMLSchema
 xsd
 xsi
+DKHM
+dkhm
