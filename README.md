@@ -32,7 +32,7 @@ The concept is to get the registration and application process to be uniform. DK
 
 The raises some issues in regard to:
 
-- nameservers associated with the domainname
+- name servers associated with the domain name
 - optional specification of billing contact
 - optional specification administrative contact
 - and ultimately, the registrar contact, based on the end-users choice of administrative model
@@ -112,7 +112,7 @@ Example lifted from the [DK Hostmaster EPP Service Specification][DKHMEPPSPEC] a
 
 As can be read from the example:
 
-- nameservers are now assigned as part of the registration and possible DNS issues addressed from registration time
+- name servers are now assigned as part of the registration and possible DNS issues addressed from registration time
 - Administrative contact is specified
 - Billing contact is specified
 
