@@ -18,6 +18,7 @@ Revision: 1.0
   - [Document History](#document-history)
   - [XML and XSD Examples](#xml-and-xsd-examples)
 - [Description](#description)
+  - [Registration of a Domain Name Offered from a Waiting list](#registration_of_a_domain_name_offered_from_a_waiting_list)
 - [References](#references)
 
 <!-- /MarkdownTOC -->
@@ -72,6 +73,7 @@ The proposed extensions and XSD definitions are available in the  [3.2 candidate
 <a id="description"></a>
 ## Description
 
+<a id="registration_of_a_domain_name_offered_from_a_waiting_list"></a>
 ### Registration of a Domain Name Offered from a Waiting list
 
 The registration, as described in the introduction is uniform to the process used today and described in the [DK Hostmaster EPP Service Specification][DKHMEPPSPEC].
