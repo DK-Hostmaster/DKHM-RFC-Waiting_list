@@ -5,7 +5,7 @@
 ![Markdownlint Action](https://github.com/DK-Hostmaster/DKHM-RFC-Waiting_list/workflows/Markdownlint%20Action/badge.svg)
 ![Spellcheck Action](https://github.com/DK-Hostmaster/DKHM-RFC-Waiting_list/workflows/Spellcheck%20Action/badge.svg)
 
-2020-09-18
+2020-09-19
 Revision: 1.0
 
 ## Table of Contents
@@ -27,16 +27,20 @@ Revision: 1.0
 
 This is a draft and proposal for changes to the process for domain name creation via the DK Hostmaster EPP portal/service. The specification briefly touches on the registrar portal service, which mimicks the EPP service for consistency.
 
-The concept is to get the registration and application proces to be uniform. DK Hostmaster offers a waiting list product to end-users today. When waiting list offers require registration this is completed via DK Hostmaster.
+The concept is to get the registration and application process to be uniform. DK Hostmaster offers a waiting list product to end-users today. When waiting list offers require registration this is completed via DK Hostmaster.
 
 The raises some issues in regard to:
 
 - nameservers associated with the domainname
-- possible billing contact
-- possible administrative contact
-- and in the end, the registrar contact, based on the end-users choice of administrative model
+- optional specification of billing contact
+- optional specification administrative contact
+- and ultimately, the registrar contact, based on the end-users choice of administrative model
 
-This RFC proposes to let domain names offered from the waiting list to be registered via the normal channels and procedures to address the above short comings to the current process.
+The registrar model offered by DK Hostmaster, gives registrars the option to manage a customer’s .dk domain name if the customer would prefer this. We call this "registrar management". Where the model to allow the customer to manage their own domain name themselves, as they do today, is referred to as "registrant management".
+
+The overall [description of the concept][CONCEPT] of the registrar model offered by DK Hostmaster A/S provided as a general overview.
+
+This RFC proposes to let domain names offered from the waiting list to be registered via the existing channels and by using the existing procedures to address the above short comings to the existing process.
 
 The procedure can be contained in the current registration process and within the EPP standard described in [RFC:5731][RFC5371].
 
@@ -55,7 +59,7 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 <a id="document-history"></a>
 ### Document History
 
-- 1.0 2020-09-18
+- 1.0 2020-09-19
   - Initial revision
 
 <a id="xml-and-xsd-examples"></a>
@@ -90,7 +94,7 @@ The only addition is the use of the standard AuthInfo section.
                 <domain:contact type="admin">DKHM2-DK</domain:contact>
                 <domain:contact type="billing">DKHM3-DK</domain:contact>
                 <domain:authInfo>
-                    <domain:pw>9c1735ba5966ccd615c8208b07404602e21de605ea3853b4702d1b6e9f504044</domain:pw>
+                    <domain:pw>445e6568-fa53-11ea-adc1-0242ac120002</domain:pw>
                 </domain:authInfo>
             </domain:create>
         </create>
@@ -107,10 +111,12 @@ Example lifted from the [DK Hostmaster EPP Service Specification][DKHMEPPSPEC] a
 As can be read from the example:
 
 - nameservers are now assigned as part of the registration and possible DNS issues addressed from registration time
-- Administrative contact is associated
-- Billing contact is associated
+- Administrative contact is specified
+- Billing contact is specified
 
 The details on associating the registrar account is described in the ["DKHM RFC for Client ID support for EPP"][DKHMRFCCLID].
+
+For the registrar portal, the procedure would be the same and additional optional parameter would be available for the transport of the AuthInfo token,
 
 <a id="references"></a>
 ## References
@@ -124,3 +130,4 @@ The details on associating the registrar account is described in the ["DKHM RFC 
 [DKHMXSDSPEC]: https://github.com/DK-Hostmaster/epp-xsd-files
 [DKHMXSD3.2]: https://github.com/DK-Hostmaster/epp-xsd-files/blob/master/dkhm-3.2.xsd
 [DKHMRFCCLID]: https://github.com/DK-Hostmaster/DKHM-RFC-CLID
+[CONCEPT]: https://www.dk-hostmaster.dk/en/new-basis-collaboration-between-registrars-and-dk-hostmaster
