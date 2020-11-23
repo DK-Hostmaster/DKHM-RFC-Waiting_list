@@ -5,8 +5,8 @@
 ![Markdownlint Action](https://github.com/DK-Hostmaster/DKHM-RFC-Waiting_list/workflows/Markdownlint%20Action/badge.svg)
 ![Spellcheck Action](https://github.com/DK-Hostmaster/DKHM-RFC-Waiting_list/workflows/Spellcheck%20Action/badge.svg)
 
-2020-09-19
-Revision: 1.1
+2020-11-23
+Revision: 1.2
 
 ## Table of Contents
 
@@ -43,7 +43,7 @@ The overall [description of the concept][CONCEPT] of the registrar model offered
 
 This RFC proposes to let domain names offered from the waiting list to be registered via the existing channels and by using the existing procedures to address the above short comings to the existing process.
 
-The procedure can be contained in the current registration process and within the EPP standard described in [RFC:5731][RFC5371].
+The procedure can be contained in the current registration process and within the EPP standard described in [RFC:5731].
 
 The only addition is that the offering communicates a AuthInfo token to the registrant, which has to be communicated as part of the registration request.
 
@@ -62,6 +62,11 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 <a id="document-history"></a>
 ### Document History
 
+- 1.2 2020-11-23
+  - Addition of additional links to resources
+  - Correction to links pointing to redundant resources
+  - Minor rephrasing and clarifications
+
 - 1.1 2020-09-19
   - Addition of disclaimer
 
@@ -73,7 +78,9 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 
 All example XML files are available in the [DK Hostmaster EPP XSD repository][DKHMXSDSPEC].
 
-The proposed extensions and XSD definitions are available in the  [3.2 candidate][DKHMXSD3.2] of the DK Hostmaster XSD, which is currently a draft and work in progress and marked as a  _pre-release_.
+The proposed extensions and XSD definitions are available in the version [4.0][DKHMXSD4.0] of the DK Hostmaster XSD, which is currently marked as a  _pre-release_.
+
+The referenced XSD version is not deployed at this time and is only available in the [EPP XSD repository][DKHMXSDSPEC], it might be surpassed by a newer version upon deployment of the EPP service implementing the proposal, please refer to the revision of [EPP Service Specification][DKHMEPPSPEC] describing the implementation.
 
 <a id="description"></a>
 ## Description
@@ -106,7 +113,7 @@ The only addition is the use of the standard AuthInfo section.
             </domain:create>
         </create>
         <extension>
-            <dkhm:orderconfirmationToken xmlns:dkhm="urn:dkhm:params:xml:ns:dkhm-3.0">testtoken</dkhm:orderconfirmationToken>
+            <dkhm:orderconfirmationToken xmlns:dkhm="urn:dkhm:params:xml:ns:dkhm-4.0">testtoken</dkhm:orderconfirmationToken>
         </extension>
         <clTRID>92724843f12a3e958588679551aa988d</clTRID>
     </command>
@@ -128,13 +135,15 @@ For the registrar portal, the procedure would be the same and additional optiona
 <a id="references"></a>
 ## References
 
-- [DK Hostmaster EPP Service Specification][DKHMEPPSPEC]
-- [DK Hostmaster EPP Service XSD Repository][DKHMXSDSPEC]
-- [RFC:5730 "Extensible Provisioning Protocol (EPP)"][RFC5730]
+1. ["New basis for collaboration between registrars and DK Hostmaster"][CONCEPT]
+1. [DK Hostmaster EPP Service Specification][DKHMEPPSPEC]
+1. [DK Hostmaster EPP Service XSD Repository][DKHMXSDSPEC]
+1. [DKHM RFC for Client ID support for EPP][DKHMRFCCLID]
+1. [RFC:5730 "Extensible Provisioning Protocol (EPP)"][RFC:5730]
 
-[RFC5730]: https://www.rfc-editor.org/rfc/rfc5730.html
+[CONCEPT]: https://www.dk-hostmaster.dk/en/new-basis-collaboration-between-registrars-and-dk-hostmaster
 [DKHMEPPSPEC]: https://github.com/DK-Hostmaster/epp-service-specification
 [DKHMXSDSPEC]: https://github.com/DK-Hostmaster/epp-xsd-files
-[DKHMXSD3.2]: https://github.com/DK-Hostmaster/epp-xsd-files/blob/master/dkhm-3.2.xsd
 [DKHMRFCCLID]: https://github.com/DK-Hostmaster/DKHM-RFC-CLID
-[CONCEPT]: https://www.dk-hostmaster.dk/en/new-basis-collaboration-between-registrars-and-dk-hostmaster
+[RFC:5730]: https://www.rfc-editor.org/rfc/rfc5730.html
+[DKHMXSD4.0]: https://github.com/DK-Hostmaster/epp-xsd-files/blob/master/dkhm-4.0.xsd
