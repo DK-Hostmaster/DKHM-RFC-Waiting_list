@@ -1,5 +1,7 @@
 ![DK Hostmaster Logo](https://www.dk-hostmaster.dk/sites/default/files/dk-logo_0.png)
 
+:warning: This document is not longer being updated, information has been lifted into the relevant service specifications :warning:
+
 # DKHM RFC for Domain Names Offered From Waiting List
 
 ![Markdownlint Action](https://github.com/DK-Hostmaster/DKHM-RFC-Waiting_list/workflows/Markdownlint%20Action/badge.svg)
